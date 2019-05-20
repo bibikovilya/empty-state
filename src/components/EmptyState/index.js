@@ -10,14 +10,20 @@ const EmptyComponent = () => (
   </div>
 )
 
-const EmptyState = ({ data, children }) => (
+const EmptyState = ({ data, fallback, children }) => (
   data.length === 0
-    ? <EmptyComponent />
+    ? fallback
     : children
 )
 
 EmptyState.propTypes = {
   data: PropTypes.arrayOf(PropTypes.any),
+  fallback: PropTypes.node
+}
+
+EmptyState.defaultProps = {
+  data: [],
+  fallback: <EmptyComponent />
 }
 
 export default EmptyState;

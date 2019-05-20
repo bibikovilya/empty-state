@@ -1,11 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+
 import EmptyState from '.';
 
 describe('EmptyState', () => {
   it('should render correctly without props', () => {
-    const component = shallow(<EmptyState />);
+    const component = TestRenderer.create(
+      <EmptyState />
+    );
 
-    expect(component).toMatchSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

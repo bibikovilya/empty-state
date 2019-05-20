@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyState should render correctly without props 1`] = `ShallowWrapper {}`;
+exports[`EmptyState should render correctly without props 1`] = `
+<div
+  className="card"
+>
+  <p>
+    We don't have what to show you
+  </p>
+  <img
+    alt="No data"
+    className="card__logo"
+    src="chatchamp-logo.png"
+  />
+</div>
+`;

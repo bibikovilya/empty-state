@@ -1,5 +1,16 @@
 # Empty state component
 
+## Getting start
+
+Install all packages:
+`yarn`
+
+Run storybook:
+`yarn storybook`
+
+Run tests:
+`yarn test`
+
 ## Investigation
 
 I've logged app.chatchamp.com application. And I've faced the pages with empty tables (Broadcasts, Campaigns, Subscribers, etc.) for a new account. I've decided to focus on tables in my further work.

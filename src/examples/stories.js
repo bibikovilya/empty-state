@@ -5,6 +5,9 @@ import EmptyState from '../components/EmptyState';
 import SubscriberList from './SubscriberList';
 import SubscriberEmpty from './SubscriberEmpty';
 
+import SubscriberListReadMe from './SubscriberList/README.md';
+import EmptyStateReadMe from '../components/EmptyState/README.md';
+
 const headers = ['Name', 'Subscribed At', 'Source', 'Subscription State'];
 const rows = [
   {id: 22, name: 'Leland', subscribedAt: '01.01.2019', source: 'site', subscriptionState: 'active'},
@@ -16,6 +19,11 @@ const rows = [
 ]
 
 storiesOf('Subscribers|Simple list', module)
+  .addParameters({
+    readme: {
+      sidebar: SubscriberListReadMe,
+    },
+  })
   .add('with data', () =>
     <SubscriberList
       headers={headers}
@@ -30,6 +38,11 @@ storiesOf('Subscribers|Simple list', module)
   );
 
 storiesOf('Subscribers|List wrapped by EmptyState', module)
+  .addParameters({
+    readme: {
+      sidebar: EmptyStateReadMe,
+    },
+  })
   .add('with data', () =>
     <EmptyState data={rows}>
       <SubscriberList

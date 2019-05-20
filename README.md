@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Empty state component
 
-## Available Scripts
+## Investigation
 
-In the project directory, you can run:
+I've logged app.chatchamp.com application. And I've faced the pages with empty tables (Broadcasts, Campaigns, Subscribers, etc.) for a new account. I've decided to focus on tables in my further work.
 
-### `npm start`
+## Implementation
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I've analyzed and investigated the possible approaches for EmptyState component implementation:
+### 1. Embedded EmptyState component.
+```
+  <SubscriberList>
+    data.length === 0
+      ? <EmptyState>
+      : <render data>
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    ...
+  </SubscriberList>
+```
+Pros:
+- the simpliest way;
+- the full control for render EmptyState component.
+Cons:
+- we need to make empty check for render EmptyState component every time;
+- the code not so clean.
 
-### `npm test`
+### 2. EmptyState Wrapper component.
+```
+  <EmptyState data={data}>
+    <SubscriberList data={data} />
+  </EmptyState>
+```
+Pros:
+- clean and simple usage;
+- all logic can be transfered to EmptyState component.
+Cons:
+- need to pass data to EmptyState component too;
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Higher-Order Component
+```
+const SubscriberListWithEmpty = withEmptyState(SubscriberList)
+...
+<SubscriberListWithEmpty data={data} />
+```
+Pros:
+- the cleaniest code;
+- don't need to pass additional data.
+Cons:
+- don't obvious approach;
+- the additional abstraction layer.
 
-### `npm run build`
+Firstly I've tried to implement the third HOC approach. It's a good way to handle an empty state. But also it's restricting you with high order component realization. The customization becomes tougher.
+Then I've tried the second wrapper approach with child render. And it shows me like more customizable solution. You have sufficient control over EmptyState component. And you have the all ways to set up any implementation details. Also, it has a pretty readable and understandable code.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The EmptyState component has the next behavior:
+- render default empty state component when data prop length is empty and fallback prop isn't passed;
+- render fallback prop if data length is empty.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Next steps
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Next possible improvements:
+- add the new function prop for override default is empty check.

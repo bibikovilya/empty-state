@@ -1,8 +1,8 @@
 Simple table component.
 
 Props:
-- headers: array of strings for table header;
-- rows: array of objects for table body.
+- headers: an array of strings for the table header;
+- rows: an array of objects for table body.
 
 ```
 <SubscriberList

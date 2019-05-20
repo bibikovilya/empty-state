@@ -1,8 +1,8 @@
 Wrapping component for handle empty state.
 
 Props:
-- data: array of data need to check;
-- fallback: override component for empty state.
+- data: an array of data needs to be checked;
+- fallback: custom component if state is empty.
 
 Default props:
 - data: []

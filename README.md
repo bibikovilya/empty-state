@@ -31,6 +31,7 @@ I've analyzed and investigated the possible approaches for EmptyState component 
 Pros:
 - the simpliest way;
 - the full control for render EmptyState component.
+
 Cons:
 - we need to make empty check for render EmptyState component every time;
 - the code not so clean.
@@ -44,6 +45,7 @@ Cons:
 Pros:
 - clean and simple usage;
 - all logic can be transfered to EmptyState component.
+
 Cons:
 - need to pass data to EmptyState component too;
 
@@ -56,6 +58,7 @@ const SubscriberListWithEmpty = withEmptyState(SubscriberList)
 Pros:
 - the cleaniest code;
 - don't need to pass additional data.
+
 Cons:
 - don't obvious approach;
 - the additional abstraction layer.
@@ -66,6 +69,10 @@ Then I've tried the second wrapper approach with child render. And it shows me l
 The EmptyState component has the next behavior:
 - render default empty state component when data prop length is empty and fallback prop isn't passed;
 - render fallback prop if data length is empty.
+
+The storybook has two scopes:
+- Simple list: the table component without empty state handling;
+- List wrapped by EmptyState: the table component wrapped by empty state handler.
 
 ## Next steps
 

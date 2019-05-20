@@ -5,7 +5,7 @@ import './index.css';
 
 const EmptyComponent = () => (
   <div className="card">
-    <p>We don't have what to show you</p>
+    <p>It seems a little empty here</p>
     <img className="card__logo" src={logo} alt="No data" />
   </div>
 )

@@ -1,6 +1,8 @@
 import { addDecorator, configure } from '@storybook/react';
 import { addReadme } from 'storybook-readme';
+import { withInfo } from '@storybook/addon-info';
 
+addDecorator(withInfo);
 addDecorator(addReadme);
 
 const req = require.context('../src', true, /stories\.js$/);

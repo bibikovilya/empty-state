@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EmptyState should render children with data 1`] = `
+Array [
+  "A",
+  "B",
+  "C",
+]
+`;
+
 exports[`EmptyState should render correctly without props 1`] = `
 <div
   className="card"
@@ -13,4 +21,25 @@ exports[`EmptyState should render correctly without props 1`] = `
     src="chatchamp-logo.png"
   />
 </div>
+`;
+
+exports[`EmptyState should render default empty state component 1`] = `
+<div
+  className="card"
+>
+  <p>
+    We don't have what to show you
+  </p>
+  <img
+    alt="No data"
+    className="card__logo"
+    src="chatchamp-logo.png"
+  />
+</div>
+`;
+
+exports[`EmptyState should render empty state component 1`] = `
+<span>
+  Empty state
+</span>
 `;

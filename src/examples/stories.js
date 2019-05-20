@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import EmptyState from './index';
-import SubscriberList from '../SubscriberList';
+import EmptyState from '../components/EmptyState';
+import SubscriberList from './SubscriberList';
 
 const headers = ['Name', 'Subscribed At', 'Source', 'Subscription State'];
 const rows = [
@@ -14,7 +14,21 @@ const rows = [
   {id: 27, name: 'Norma', subscribedAt: '21.04.2019', source: 'site', subscriptionState: 'active'},
 ]
 
-storiesOf('EmptyState', module)
+storiesOf('Subscribers|Simple list', module)
+  .add('with data', () =>
+    <SubscriberList
+      headers={headers}
+      rows={rows}
+    />
+  )
+  .add('without data', () =>
+    <SubscriberList
+      headers={headers}
+      rows={[]}
+    />
+  );
+
+storiesOf('Subscribers|List wrapped by EmptyState', module)
   .add('with data', () =>
     <EmptyState data={rows}>
       <SubscriberList

@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import EmptyState from '../components/EmptyState';
 import SubscriberList from './SubscriberList';
+import SubscriberEmpty from './SubscriberEmpty';
 
 const headers = ['Name', 'Subscribed At', 'Source', 'Subscription State'];
 const rows = [
@@ -39,6 +40,14 @@ storiesOf('Subscribers|List wrapped by EmptyState', module)
   )
   .add('without data', () =>
     <EmptyState data={[]}>
+      <SubscriberList
+        headers={headers}
+        rows={[]}
+      />
+    </EmptyState>
+  )
+  .add('with custom fallback', () =>
+    <EmptyState data={[]} fallback={<SubscriberEmpty />} >
       <SubscriberList
         headers={headers}
         rows={[]}
